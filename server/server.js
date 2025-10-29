@@ -16,11 +16,12 @@ app.use(express.json()); // Allows server to read JSON data from requests
 const SPREADSHEET_ID = '1mkyheoBCl7HkYTEQjeVLbinN_QNeUcEdMmSAddd5wjc'; // Replace with your Sheet ID
 
 const auth = new google.auth.GoogleAuth({
-    // Look for the file in the PARENT directory relative to server.js
-    keyFile: path.join(__dirname, '..', 'credentials.json'),
+    // Try absolute path Render often uses for secrets
+    keyFile: '/etc/secrets/credentials.json',
+    // If the above doesn't work after deploying, try this one:
+    // keyFile: '/opt/render/project/src/credentials.json',
     scopes: 'https://www.googleapis.com/auth/spreadsheets',
 });
-
 // Google Sheets API client
 let sheets;
 auth.getClient().then(client => {

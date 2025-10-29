@@ -13,10 +13,10 @@ app.use(express.json()); // Allows server to read JSON data from requests
 // <<< PASTE YOUR ACTUAL SPREADSHEET ID HERE >>>
 const SPREADSHEET_ID = '1mkyheoBCl7HkYTEQjeVLbinN_QNeUcEdMmSAddd5wjc'; // Replace with your Sheet ID
 
-// Authentication object
 const auth = new google.auth.GoogleAuth({
-    keyFile: 'credentials.json', // Path to your credentials file
-    scopes: 'https://www.googleapis.com/auth/spreadsheets', // Permissions needed
+    // Look for the file in the PARENT directory relative to server.js
+    keyFile: path.join(__dirname, '..', 'credentials.json'),
+    scopes: 'https://www.googleapis.com/auth/spreadsheets',
 });
 
 // Google Sheets API client

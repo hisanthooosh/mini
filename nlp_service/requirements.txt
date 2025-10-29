@@ -1,0 +1,6 @@
+Flask
+flask-cors
+scikit-learn
+nltk
+numpy
+gunicorn # Needed by Render to run Flask
